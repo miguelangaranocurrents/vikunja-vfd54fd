@@ -594,5 +594,8 @@ describe('hasFilterQuery', () => {
 	it('returns a boolean for a filter expression', () => {
 		expect(hasFilterQuery('done = false')).toBe(true)
 		expect(hasFilterQuery('hello')).toBe(false)
+		// "in" is an operator, but only as a whole word
+		expect(hasFilterQuery('meeting')).toBe(false)
+		expect(hasFilterQuery('labels in 1')).toBe(true)
 	})
 })
